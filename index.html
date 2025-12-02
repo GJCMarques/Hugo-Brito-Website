@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUGO BRITO - Luxury Portuguese Craftsmanship</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Framer Motion -->
+    <script src="https://unpkg.com/framer-motion@10/dist/framer-motion.js"></script>
+
+    <!-- Lucide React Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #f5f5dc;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-accent {
+            color: #D4AF37;
+        }
+
+        .gold-border {
+            border-color: #D4AF37;
+        }
+
+        .gold-bg {
+            background-color: #D4AF37;
+        }
+
+        .bg-dark {
+            background-color: #0a0a0a;
+        }
+
+        .bg-darker {
+            background-color: #050505;
+        }
+
+        .text-cream {
+            color: #f5f5dc;
+        }
+
+        /* Flip card perspective */
+        .flip-card {
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Glitch effect for innovation section */
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px #D4AF37, -2px -2px #f5f5dc;
+            }
+            25% {
+                text-shadow: -2px -2px #D4AF37, 2px 2px #f5f5dc;
+            }
+            50% {
+                text-shadow: 2px -2px #D4AF37, -2px 2px #f5f5dc;
+            }
+            75% {
+                text-shadow: -2px 2px #D4AF37, 2px -2px #f5f5dc;
+            }
+            100% {
+                text-shadow: 2px 2px #D4AF37, -2px -2px #f5f5dc;
+            }
+        }
+
+        .glitch-text:hover {
+            animation: glitch 0.3s infinite;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { motion } = window.Motion;
+
+        // Team data
+        const teamMembers = [
+            {
+                id: 1,
+                name: "Hugo Brito",
+                title: "CEO & Founder",
+                profile: "High Power Motivation",
+                trait: "Visionary but prone to Micromanagement",
+                image: "https://placehold.co/400x600/1a1a1a/D4AF37?text=HB&font=playfair-display"
+            },
+            {
+                id: 2,
+                name: "Nuno Magalhaes",
+                title: "Creative Director",
+                profile: "High Independence",
+                trait: "Creative Genius, resistant to structure",
+                image: "https://placehold.co/400x600/1a1a1a/D4AF37?text=NM&font=playfair-display"
+            },
+            {
+                id: 3,
+                name: "Manuel Santos",
+                title: "Head of Marketing",
+                profile: "High Social Need",
+                trait: "The Mediator/Peacemaker",
+                image: "https://placehold.co/400x600/1a1a1a/D4AF37?text=MS&font=playfair-display"
+            },
+            {
+                id: 4,
+                name: "Guilherme Marques",
+                title: "Head of Production",
+                profile: "High Need for Order",
+                trait: "Quality Guardian, resistant to change",
+                image: "https://placehold.co/400x600/1a1a1a/D4AF37?text=GM&font=playfair-display"
+            }
+        ];
+
+        // Hero Section
+        const HeroSection = () => {
+            return (
+                <section className="min-h-screen flex items-center justify-center bg-darker relative overflow-hidden">
+                    {/* Decorative border */}
+                    <div className="absolute inset-0 border-8 gold-border opacity-20 pointer-events-none"></div>
+
+                    <motion.div
+                        className="text-center z-10 px-6"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    >
+                        {/* Brand Monogram */}
+                        <motion.div
+                            className="mb-8"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.3 }}
+                        >
+                            <div className="w-24 h-24 mx-auto border-2 gold-border flex items-center justify-center mb-6">
+                                <span className="font-serif text-4xl gold-accent font-bold">HB</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Main Title */}
+                        <motion.h1
+                            className="font-serif text-6xl md:text-8xl lg:text-9xl font-bold text-cream mb-6 tracking-widest"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1.5, delay: 0.5 }}
+                        >
+                            HUGO BRITO
+                        </motion.h1>
+
+                        {/* Divider */}
+                        <motion.div
+                            className="w-32 h-px gold-bg mx-auto mb-6"
+                            initial={{ width: 0 }}
+                            animate={{ width: 128 }}
+                            transition={{ duration: 1, delay: 1 }}
+                        ></motion.div>
+
+                        {/* Subtitle */}
+                        <motion.p
+                            className="text-xl md:text-2xl lg:text-3xl text-cream mb-12 tracking-wide font-light"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 1.2 }}
+                        >
+                            Luxury Portuguese Craftsmanship
+                        </motion.p>
+
+                        {/* CTA Button */}
+                        <motion.button
+                            className="border-2 gold-border gold-accent px-12 py-4 text-lg tracking-widest hover:gold-bg hover:text-black transition-all duration-500 font-medium"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 1.5 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            EXPLORE COLLECTION
+                        </motion.button>
+                    </motion.div>
+
+                    {/* Scroll Indicator */}
+                    <motion.div
+                        className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    >
+                        <div className="w-6 h-10 border-2 gold-border rounded-full flex justify-center pt-2">
+                            <div className="w-1 h-2 gold-bg rounded-full"></div>
+                        </div>
+                    </motion.div>
+                </section>
+            );
+        };
+
+        // About Section
+        const AboutSection = () => {
+            return (
+                <section className="min-h-screen flex items-center justify-center bg-dark py-20 px-6">
+                    <motion.div
+                        className="max-w-4xl mx-auto text-center"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1 }}
+                    >
+                        <motion.h2
+                            className="font-serif text-5xl md:text-6xl font-bold text-cream mb-8 tracking-wider"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                        >
+                            The Culture
+                        </motion.h2>
+
+                        <div className="w-24 h-px gold-bg mx-auto mb-12"></div>
+
+                        <motion.p
+                            className="text-xl md:text-2xl text-cream leading-relaxed mb-8 font-light"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.4 }}
+                        >
+                            Merging traditional Portuguese craftsmanship with contemporary design,
+                            HUGO BRITO represents the pinnacle of <span className="gold-accent font-medium">exclusivity</span> and
+                            <span className="gold-accent font-medium"> artisanal</span> excellence.
+                        </motion.p>
+
+                        <motion.p
+                            className="text-lg md:text-xl text-cream/80 leading-relaxed mb-12"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.6 }}
+                        >
+                            Each piece is a <span className="gold-accent">limited edition</span> masterpiece,
+                            handcrafted by Portuguese artisans who have perfected their craft over generations.
+                            We don't just create fashionwe preserve heritage.
+                        </motion.p>
+
+                        {/* Feature highlights */}
+                        <motion.div
+                            className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.8 }}
+                        >
+                            <div className="border border-neutral-800 p-6 hover:border-opacity-100 gold-border transition-all duration-500">
+                                <h3 className="font-serif text-2xl gold-accent mb-3">Exclusivity</h3>
+                                <p className="text-cream/70">Limited quantities, unlimited prestige</p>
+                            </div>
+                            <div className="border border-neutral-800 p-6 hover:border-opacity-100 gold-border transition-all duration-500">
+                                <h3 className="font-serif text-2xl gold-accent mb-3">Artisanal</h3>
+                                <p className="text-cream/70">Handcrafted with centuries of expertise</p>
+                            </div>
+                            <div className="border border-neutral-800 p-6 hover:border-opacity-100 gold-border transition-all duration-500">
+                                <h3 className="font-serif text-2xl gold-accent mb-3">Timeless</h3>
+                                <p className="text-cream/70">Heritage meets modern elegance</p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                </section>
+            );
+        };
+
+        // Team Card Component
+        const TeamCard = ({ member }) => {
+            return (
+                <motion.div
+                    className="flip-card h-[500px] md:h-[600px] cursor-pointer"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <div className="flip-card-inner h-full">
+                        {/* Front of card - Professional facade */}
+                        <div className="flip-card-front bg-neutral-900 border-2 gold-border p-8 flex flex-col justify-end relative">
+                            <div className="absolute inset-0 opacity-20"
+                                 style={{ backgroundImage: `url(${member.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                            </div>
+                            <div className="relative z-10">
+                                <div className="w-16 h-16 border gold-border flex items-center justify-center mb-4 gold-bg bg-opacity-20">
+                                    <span className="font-serif text-2xl gold-accent font-bold">
+                                        {member.name.split(' ').map(n => n[0]).join('')}
+                                    </span>
+                                </div>
+                                <h3 className="font-serif text-3xl font-bold text-cream mb-2">{member.name}</h3>
+                                <p className="text-lg gold-accent tracking-wide">{member.title}</p>
+                            </div>
+                        </div>
+
+                        {/* Back of card - The psychological truth */}
+                        <div className="flip-card-back bg-neutral-950 border-2 border-red-900 p-8 flex flex-col justify-center items-center text-center">
+                            <div className="mb-6">
+                                <svg className="w-16 h-16 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                            <h4 className="font-serif text-2xl font-bold text-red-400 mb-4 tracking-wide">
+                                PSYCHOLOGICAL PROFILE
+                            </h4>
+                            <div className="w-24 h-px bg-red-500 mx-auto mb-6"></div>
+                            <p className="text-xl text-red-300 font-medium mb-4">{member.profile}</p>
+                            <p className="text-base text-cream/80 leading-relaxed italic">"{member.trait}"</p>
+
+                            <div className="mt-8 text-xs text-cream/50 tracking-widest">
+                                CONFIDENTIAL " INTERNAL USE ONLY
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            );
+        };
+
+        // Team Section
+        const TeamSection = () => {
+            return (
+                <section className="min-h-screen bg-darker py-20 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <motion.div
+                            className="text-center mb-16"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
+                        >
+                            <h2 className="font-serif text-5xl md:text-6xl font-bold text-cream mb-6 tracking-wider">
+                                Leadership
+                            </h2>
+                            <div className="w-24 h-px gold-bg mx-auto mb-6"></div>
+                            <p className="text-xl text-cream/70 max-w-2xl mx-auto">
+                                The visionaries behind HUGO BRITO's unparalleled excellence
+                            </p>
+                            <p className="text-sm text-cream/40 mt-4 italic">
+                                (Hover over cards to reveal insights)
+                            </p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {teamMembers.map((member) => (
+                                <TeamCard key={member.id} member={member} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Innovation Section
+        const InnovationSection = () => {
+            return (
+                <section className="min-h-screen flex items-center justify-center bg-dark py-20 px-6 relative overflow-hidden">
+                    {/* Digital grid background */}
+                    <div className="absolute inset-0 opacity-5"
+                         style={{
+                             backgroundImage: 'linear-gradient(#D4AF37 1px, transparent 1px), linear-gradient(90deg, #D4AF37 1px, transparent 1px)',
+                             backgroundSize: '50px 50px'
+                         }}>
+                    </div>
+
+                    <motion.div
+                        className="max-w-5xl mx-auto text-center relative z-10"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1 }}
+                    >
+                        <motion.div
+                            className="mb-8"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <svg className="w-20 h-20 mx-auto gold-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </motion.div>
+
+                        <motion.h2
+                            className="font-serif text-5xl md:text-7xl font-bold text-cream mb-8 tracking-wider glitch-text"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                        >
+                            Digital Transformation
+                        </motion.h2>
+
+                        <div className="w-32 h-px gold-bg mx-auto mb-12"></div>
+
+                        <motion.p
+                            className="text-xl md:text-2xl text-cream leading-relaxed mb-8"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.4 }}
+                        >
+                            Where <span className="font-serif text-2xl gold-accent">Tradition</span> meets
+                            <span className="font-mono text-2xl gold-accent"> Technology</span>
+                        </motion.p>
+
+                        <motion.p
+                            className="text-lg text-cream/70 leading-relaxed mb-12 max-w-3xl mx-auto"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.6 }}
+                        >
+                            The future of luxury demands evolution. As we integrate cutting-edge digital systems
+                            into our artisanal processes, we face the eternal tension: How do we preserve the soul
+                            of craftsmanship while embracing the efficiency of innovation?
+                        </motion.p>
+
+                        {/* Tech vs Tradition Comparison */}
+                        <motion.div
+                            className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.8 }}
+                        >
+                            <div className="border-2 border-neutral-800 p-8 bg-neutral-900/50">
+                                <h3 className="font-serif text-3xl gold-accent mb-4">Heritage</h3>
+                                <p className="text-cream/70">Slow. Deliberate. Timeless.</p>
+                                <p className="text-sm text-cream/50 mt-4">The way it has always been done.</p>
+                            </div>
+                            <div className="border-2 gold-border p-8 bg-gradient-to-br from-neutral-900 to-neutral-950 glitch-text">
+                                <h3 className="font-mono text-3xl gold-accent mb-4">Innovation</h3>
+                                <p className="text-cream/70">Fast. Disruptive. Uncertain.</p>
+                                <p className="text-sm text-cream/50 mt-4">The way it must become.</p>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            className="mt-16 text-cream/60 italic text-lg"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 1.2 }}
+                        >
+                            <p>"Can a brand built on human mastery survive the age of algorithms?"</p>
+                        </motion.div>
+                    </motion.div>
+                </section>
+            );
+        };
+
+        // Footer
+        const Footer = () => {
+            return (
+                <footer className="bg-darker border-t gold-border py-12 px-6">
+                    <div className="max-w-7xl mx-auto text-center">
+                        <div className="w-16 h-16 border gold-border flex items-center justify-center mx-auto mb-6">
+                            <span className="font-serif text-2xl gold-accent font-bold">HB</span>
+                        </div>
+                        <p className="text-cream/70 mb-2">HUGO BRITO</p>
+                        <p className="text-cream/50 text-sm mb-6">Luxury Portuguese Craftsmanship</p>
+                        <div className="w-24 h-px gold-bg mx-auto mb-6"></div>
+                        <p className="text-cream/40 text-xs">
+                            � 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
+                        </p>
+                        <p className="text-cream/30 text-xs mt-4">
+                            Lisboa, Portugal
+                        </p>
+                    </div>
+                </footer>
+            );
+        };
+
+        // Main App Component
+        const App = () => {
+            return (
+                <div className="bg-dark">
+                    <HeroSection />
+                    <AboutSection />
+                    <TeamSection />
+                    <InnovationSection />
+                    <Footer />
+                </div>
+            );
+        };
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
