@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Transformation at HUGO BRITO - Where tradition meets technology in luxury fashion.">
+    <title>Innovation - HUGO BRITO</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="header-logo">
+                <div class="header-logo-box">
+                    <span class="header-logo-text">HB</span>
+                </div>
+                <span class="header-brand-name">HUGO BRITO</span>
+            </a>
+
+            <nav class="nav">
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="atelier.html" class="nav-link">Atelier</a></li>
+                    <li><a href="runway.html" class="nav-link">Runway</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Maison</a>
+                        <div class="nav-dropdown">
+                            <a href="team.html" class="nav-dropdown-link">Team</a>
+                            <a href="innovation.html" class="nav-dropdown-link active">Innovation</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="cart-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- INNOVATION SECTION -->
+    <section class="innovation-section">
+        <div class="tech-grid-bg"></div>
+
+        <div class="innovation-content">
+            <!-- Icon -->
+            <div class="innovation-icon">
+                <svg viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+
+            <!-- Title with glitch effect -->
+            <h2 class="glitch-title">Digital Transformation</h2>
+
+            <div class="section-divider"></div>
+
+            <!-- Main Text -->
+            <p class="innovation-text">
+                Where <span class="font-serif text-3xl gold-accent">Tradition</span> meets
+                <span class="font-mono text-3xl gold-accent">Technology</span>
+            </p>
+
+            <!-- Description -->
+            <p class="innovation-description">
+                The future of luxury demands evolution. As we integrate cutting-edge digital systems
+                into our artisanal processes, we face the eternal tension: How do we preserve the soul
+                of craftsmanship while embracing the efficiency of innovation?
+            </p>
+
+            <!-- Comparison Grid -->
+            <div class="comparison-grid">
+                <!-- Heritage Card -->
+                <div class="comparison-card heritage">
+                    <h3 class="comparison-title">Heritage</h3>
+                    <p class="comparison-description">Slow. Deliberate. Timeless.</p>
+                    <p class="comparison-note">The way it has always been done.</p>
+                </div>
+
+                <!-- Tech Card -->
+                <div class="comparison-card tech">
+                    <h3 class="comparison-title">Innovation</h3>
+                    <p class="comparison-description">Fast. Disruptive. Uncertain.</p>
+                    <p class="comparison-note">The way it must become.</p>
+                </div>
+            </div>
+
+            <!-- Philosophical Quote -->
+            <div class="philosophical-quote">
+                <p>"Can a brand built on human mastery survive the age of algorithms?"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo-box">
+            <span class="logo-text">HB</span>
+        </div>
+        <p class="footer-brand">HUGO BRITO</p>
+        <p class="footer-tagline">Luxury Portuguese Craftsmanship</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copyright">
+            &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
+        </p>
+        <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
+            Lisboa, Portugal
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>gsap.registerPlugin(ScrollTrigger);</script>
+    
+    
+    <script src="../script.js"></script>
+
+</body>
+</html>

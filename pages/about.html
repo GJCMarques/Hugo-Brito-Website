@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the culture behind HUGO BRITO - where traditional Portuguese craftsmanship meets contemporary design.">
+    <title>Brand Culture - HUGO BRITO</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="header-logo">
+                <div class="header-logo-box">
+                    <span class="header-logo-text">HB</span>
+                </div>
+                <span class="header-brand-name">HUGO BRITO</span>
+            </a>
+
+            <nav class="nav">
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Maison</a>
+                        <div class="nav-dropdown">
+                            <a href="team.html" class="nav-dropdown-link">Team</a>
+                            <a href="innovation.html" class="nav-dropdown-link">Innovation</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="cart-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">The Culture</h2>
+
+            <div class="section-divider"></div>
+
+            <p class="about-text">
+                Merging traditional Portuguese craftsmanship with contemporary design,
+                HUGO BRITO represents the pinnacle of <span class="gold-accent font-medium">exclusivity</span> and
+                <span class="gold-accent font-medium">artisanal</span> excellence.
+            </p>
+
+            <p class="about-text-secondary">
+                Each piece is a <span class="gold-accent">limited edition</span> masterpiece,
+                handcrafted by Portuguese artisans who have perfected their craft over generations.
+                We don't just create fashion—we preserve heritage.
+            </p>
+
+            <!-- Feature Highlights -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">Exclusivity</h3>
+                    <p class="feature-description">Limited quantities, unlimited prestige</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Artisanal</h3>
+                    <p class="feature-description">Handcrafted with centuries of expertise</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Timeless</h3>
+                    <p class="feature-description">Heritage meets modern elegance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo-box">
+            <span class="logo-text">HB</span>
+        </div>
+        <p class="footer-brand">HUGO BRITO</p>
+        <p class="footer-tagline">Luxury Portuguese Craftsmanship</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copyright">
+            &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
+        </p>
+        <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
+            Lisboa, Portugal
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>gsap.registerPlugin(ScrollTrigger);</script>
+    <script src="../script.js"></script>
+
+</body>
+</html>

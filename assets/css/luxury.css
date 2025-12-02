@@ -1,0 +1,485 @@
+/* ============================================
+   HUGO BRITO - LUXURY DESIGN SYSTEM
+   Typography, Gold Accents, Glassmorphism, Premium Effects
+   ============================================ */
+
+/* === PREMIUM TYPOGRAPHY === */
+.title-hero {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 800;
+    letter-spacing: 0.5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title-section {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    color: var(--color-cream);
+    position: relative;
+    display: inline-block;
+}
+
+.title-accent {
+    font-family: var(--font-serif);
+    color: var(--color-gold);
+    font-style: italic;
+}
+
+.subtitle {
+    font-family: var(--font-sans);
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    color: rgba(245, 245, 220, 0.8);
+    text-transform: uppercase;
+}
+
+.body-large {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.8;
+    color: rgba(245, 245, 220, 0.9);
+    font-weight: 400;
+}
+
+.body-small {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(245, 245, 220, 0.7);
+}
+
+.price {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-gold);
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+/* === GOLD ACCENT ELEMENTS === */
+.divider-gold {
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    margin: var(--spacing-md) auto;
+}
+
+.divider-gold-solid {
+    width: 120px;
+    height: 2px;
+    background-color: var(--color-gold);
+    margin: var(--spacing-md) auto;
+}
+
+.border-gold {
+    border: 2px solid var(--color-gold);
+}
+
+.border-gold-thin {
+    border: 1px solid var(--color-gold);
+}
+
+.border-gold-hover {
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.border-gold-hover:hover {
+    border-color: var(--color-gold);
+}
+
+/* Gold accent lines */
+.accent-line {
+    position: relative;
+    padding-left: var(--spacing-md);
+}
+
+.accent-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-gold), transparent);
+}
+
+/* === GLASSMORPHISM === */
+.glass {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.glass-dark {
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.glass-gold {
+    background: rgba(212, 175, 55, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* === PREMIUM BACKGROUNDS === */
+.bg-black {
+    background-color: var(--color-black);
+}
+
+.bg-darker {
+    background-color: var(--color-darker);
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-grey) 100%);
+}
+
+.bg-gradient-gold {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+}
+
+/* Mesh gradient background */
+.bg-mesh {
+    background:
+        radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.03) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(212, 175, 55, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.03) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(212, 175, 55, 0.05) 0px, transparent 50%),
+        var(--color-black);
+}
+
+/* === SHADOWS & DEPTH === */
+.shadow-gold {
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+}
+
+.shadow-gold-lg {
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+}
+
+.shadow-dark {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.glow-gold {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.glow-gold:hover {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+}
+
+/* === TEXT EFFECTS === */
+.text-shadow-gold {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.text-outline-gold {
+    -webkit-text-stroke: 1px var(--color-gold);
+    color: transparent;
+}
+
+/* Glitch effect */
+.glitch {
+    position: relative;
+    animation: glitch-skew 1s infinite;
+}
+
+.glitch:hover {
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 2px 2px var(--color-gold), -2px -2px var(--color-cream);
+    }
+    25% {
+        text-shadow: -2px -2px var(--color-gold), 2px 2px var(--color-cream);
+    }
+    50% {
+        text-shadow: 2px -2px var(--color-gold), -2px 2px var(--color-cream);
+    }
+    75% {
+        text-shadow: -2px 2px var(--color-gold), 2px -2px var(--color-cream);
+    }
+    100% {
+        text-shadow: 2px 2px var(--color-gold), -2px -2px var(--color-cream);
+    }
+}
+
+@keyframes glitch-skew {
+    0% {
+        transform: skew(0deg);
+    }
+    10% {
+        transform: skew(-1deg);
+    }
+    20% {
+        transform: skew(0deg);
+    }
+}
+
+/* === LUXURY HOVER EFFECTS === */
+.hover-lift {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px);
+}
+
+.hover-scale {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-gold {
+    transition: var(--transition-smooth);
+}
+
+.hover-gold:hover {
+    color: var(--color-gold);
+}
+
+/* === IMAGE REVEAL EFFECT === */
+.image-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-reveal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-black);
+    z-index: 2;
+    transform-origin: left;
+}
+
+.image-reveal.revealed::before {
+    animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal {
+    0% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    50.1% {
+        transform-origin: right;
+    }
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+/* === PARALLAX EFFECTS === */
+.parallax {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+/* === PREMIUM PATTERNS === */
+.pattern-dots {
+    background-image: radial-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.pattern-grid {
+    background-image:
+        linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* === DECORATIVE ELEMENTS === */
+.corner-accent {
+    position: relative;
+}
+
+.corner-accent::before,
+.corner-accent::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--color-gold);
+}
+
+.corner-accent::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-accent::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* Logo box */
+.logo-box {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.logo-box:hover {
+    background-color: var(--color-gold);
+    transform: scale(1.05);
+}
+
+.logo-text {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-gold);
+    font-weight: 700;
+}
+
+.logo-box:hover .logo-text {
+    color: var(--color-black);
+}
+
+/* === SCROLL INDICATOR === */
+.scroll-indicator {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--color-gold);
+    border-radius: 20px;
+    position: relative;
+    animation: scrollBounce 2s infinite;
+}
+
+.scroll-indicator::before {
+    content: '';
+    width: 4px;
+    height: 10px;
+    background-color: var(--color-gold);
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollDot 2s infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes scrollDot {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+}
+
+/* === PREMIUM ANIMATIONS === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* === LUXURY CURSOR EFFECT === */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="%23D4AF37" stroke-width="1"/></svg>'), auto;
+}
+
+a, button {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23D4AF37"/></svg>'), pointer;
+}
+
+/* === RESPONSIVE LUXURY === */
+@media (max-width: 768px) {
+    .title-hero {
+        letter-spacing: 0.2rem;
+    }
+
+    .title-section {
+        letter-spacing: 0.1rem;
+    }
+
+    .subtitle {
+        letter-spacing: 0.1rem;
+    }
+
+    .corner-accent::before,
+    .corner-accent::after {
+        width: 20px;
+        height: 20px;
+    }
+}

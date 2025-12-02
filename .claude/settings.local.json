@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(do sed -i 's|<script src=\"\"../assets/js/cart.js\"\"></script>||g; s|<script src=\"\"../assets/js/app.js\"\"></script>||g; s|<script src=\"\"../assets/js/animations.js\"\"></script>|<script src=\"\"../script.js\"\"></script>|g' \"$file\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

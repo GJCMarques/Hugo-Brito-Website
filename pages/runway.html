@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Runway - Where creative chaos meets visionary design. Nuno Magalhães' world of breaking boundaries.">
+    <title>The Runway - HUGO BRITO</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        .runway-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chaos-grid {
+            position: relative;
+            min-height: 80vh;
+            padding: 4rem 2rem;
+        }
+
+        .runway-image {
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            object-fit: cover;
+            border: 2px solid var(--color-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .runway-image:hover {
+            z-index: 10;
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
+        }
+
+        .runway-image:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-5deg);
+        }
+
+        .runway-image:nth-child(2) {
+            top: 30%;
+            right: 10%;
+            transform: rotate(8deg);
+            z-index: 2;
+        }
+
+        .runway-image:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+            transform: rotate(3deg);
+        }
+
+        .runway-image:nth-child(4) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-3deg);
+            z-index: 1;
+        }
+
+        .chaos-text {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            text-transform: uppercase;
+            -webkit-text-stroke: 2px var(--color-gold);
+            color: transparent;
+        }
+
+        .chaos-text.filled {
+            -webkit-text-stroke: 0;
+            color: var(--color-gold);
+        }
+
+        @media (max-width: 768px) {
+            .runway-image {
+                width: 280px;
+                height: 360px;
+            }
+
+            .chaos-grid {
+                min-height: 120vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="header-logo">
+                <div class="header-logo-box">
+                    <span class="header-logo-text">HB</span>
+                </div>
+                <span class="header-brand-name">HUGO BRITO</span>
+            </a>
+
+            <nav class="nav">
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="atelier.html" class="nav-link">Atelier</a></li>
+                    <li><a href="runway.html" class="nav-link active">Runway</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Maison</a>
+                        <div class="nav-dropdown">
+                            <a href="team.html" class="nav-dropdown-link">Team</a>
+                            <a href="innovation.html" class="nav-dropdown-link">Innovation</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="cart-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="runway-hero bg-darker">
+        <div class="container text-center">
+            <h1 class="runway-title title-hero">BREAKING BOUNDARIES</h1>
+            <div class="divider-gold-solid my-8"></div>
+            <p class="subtitle">Where Chaos Becomes Beauty</p>
+        </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="section bg-black">
+        <div class="container max-w-4xl text-center">
+            <p class="chaos-text mb-6">VISION</p>
+            <p class="chaos-text filled mb-6">NOT RULES</p>
+            <p class="chaos-text mb-12">CHAOS</p>
+
+            <div class="runway-text">
+                <p class="body-large mb-6">
+                    This is Nuno's domain. The Creative Director who sees fashion not as a craft, but as <span class="text-gold">art in rebellion</span>.
+                </p>
+                <p class="body-small text-cream opacity-70">
+                    While Guilherme obsesses over perfect stitches, Nuno dreams of deconstructed silhouettes that defy convention.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAOS GRID: Overlapping Images -->
+    <section class="chaos-grid bg-darker">
+        <img src="https://placehold.co/400x500/1a1a1a/D4AF37?text=Design+1" alt="Design 1" class="runway-image">
+        <img src="https://placehold.co/400x500/1a1a1a/D4AF37?text=Design+2" alt="Design 2" class="runway-image">
+        <img src="https://placehold.co/400x500/1a1a1a/D4AF37?text=Design+3" alt="Design 3" class="runway-image">
+        <img src="https://placehold.co/400x500/1a1a1a/D4AF37?text=Design+4" alt="Design 4" class="runway-image">
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="section bg-black">
+        <div class="container max-w-5xl">
+            <div class="grid grid-2 gap-12">
+
+                <div class="runway-text">
+                    <h2 class="title-section mb-6">The Creative Mind</h2>
+                    <div class="accent-line">
+                        <p class="body-large mb-4">
+                            "Structure kills creativity. Rules are meant to be broken. I don't design for the market—I design for the future."
+                        </p>
+                        <p class="body-small text-cream opacity-60">
+                            Nuno Magalhães refuses to be confined by traditional tailoring norms. His sketches are provocative, his ideas radical.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="runway-text">
+                    <h2 class="title-section mb-6">The Tension</h2>
+                    <div class="border-gold-hover p-6">
+                        <p class="body-small text-cream opacity-80 mb-4">
+                            Every collection becomes a battlefield:
+                        </p>
+                        <ul class="space-y-3 text-sm text-cream opacity-70">
+                            <li class="flex items-start gap-3">
+                                <span class="text-gold">→</span>
+                                <span>Nuno pushes for avant-garde experimentation</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-gold">→</span>
+                                <span>Guilherme demands traditional craftsmanship</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-gold">→</span>
+                                <span>Hugo struggles to mediate between vision and viability</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL STATEMENT -->
+    <section class="section bg-darker">
+        <div class="container text-center">
+            <div class="max-w-3xl mx-auto">
+                <p class="chaos-text filled mb-8">CREATE<br>OR<br>DIE</p>
+                <p class="body-small text-cream opacity-60 italic">
+                    "If we're not making them uncomfortable, we're not making art."
+                </p>
+                <p class="text-sm text-gold mt-4">
+                    — Nuno Magalhães, Creative Director
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo-box">
+            <span class="logo-text">HB</span>
+        </div>
+        <p class="footer-brand">HUGO BRITO</p>
+        <p class="footer-tagline">Luxury Portuguese Craftsmanship</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copyright">
+            &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
+        </p>
+        <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
+            Lisboa, Portugal
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>gsap.registerPlugin(ScrollTrigger);</script>
+    
+    
+    <script src="../script.js"></script>
+
+</body>
+</html>

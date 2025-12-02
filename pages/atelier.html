@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Atelier - Where Portuguese craftsmanship meets obsessive quality. Hugo Brito's workshop of perfection.">
+    <title>The Atelier - HUGO BRITO</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        .atelier-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .atelier-section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .atelier-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            margin: 4rem 0;
+        }
+
+        .quote-block {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.3;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="header-logo">
+                <div class="header-logo-box">
+                    <span class="header-logo-text">HB</span>
+                </div>
+                <span class="header-brand-name">HUGO BRITO</span>
+            </a>
+
+            <nav class="nav">
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="atelier.html" class="nav-link active">Atelier</a></li>
+                    <li><a href="runway.html" class="nav-link">Runway</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Maison</a>
+                        <div class="nav-dropdown">
+                            <a href="team.html" class="nav-dropdown-link">Team</a>
+                            <a href="innovation.html" class="nav-dropdown-link">Innovation</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="cart-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="atelier-hero bg-darker">
+        <div class="container text-center">
+            <h1 class="atelier-title title-hero fade-in">THE ATELIER</h1>
+            <div class="divider-gold-solid my-8"></div>
+            <p class="subtitle slide-up">Where Time Stands Still for Perfection</p>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="atelier-section bg-black">
+        <div class="container">
+            <div class="quote-block atelier-text-block text-cream">
+                "We refuse to rush perfection. Every stitch, every seam, every button is placed with deliberate care."
+            </div>
+        </div>
+    </section>
+
+    <!-- IMAGE 1: Hands Working -->
+    <section class="atelier-section bg-darker">
+        <div class="container">
+            <div class="image-reveal">
+                <img src="https://placehold.co/1400x600/1a1a1a/D4AF37?text=Hands+Crafting+Leather" alt="Artisan hands" class="atelier-image parallax" data-speed="0.5">
+            </div>
+            <div class="max-w-3xl mx-auto mt-12 atelier-text-block">
+                <h2 class="title-section text-center mb-6">Slow Fashion</h2>
+                <div class="accent-line">
+                    <p class="body-large text-center">
+                        In our Lisboa atelier, time is not measured in hours, but in the quality of each thread.
+                        This is Guilherme's domain—a sanctuary of order, precision, and unwavering standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE PROCESS -->
+    <section class="atelier-section bg-black">
+        <div class="container">
+            <h2 class="title-section text-center mb-16">The Process</h2>
+            <div class="grid grid-3 gap-12 max-w-5xl mx-auto">
+
+                <div class="text-center scale-in">
+                    <div class="logo-box mx-auto mb-4">
+                        <span class="text-2xl">01</span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-gold mb-3">Selection</h3>
+                    <p class="body-small">Only the finest Portuguese materials pass our rigorous standards.</p>
+                </div>
+
+                <div class="text-center scale-in">
+                    <div class="logo-box mx-auto mb-4">
+                        <span class="text-2xl">02</span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-gold mb-3">Craftsmanship</h3>
+                    <p class="body-small">40+ hours of meticulous handwork by master artisans.</p>
+                </div>
+
+                <div class="text-center scale-in">
+                    <div class="logo-box mx-auto mb-4">
+                        <span class="text-2xl">03</span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-gold mb-3">Inspection</h3>
+                    <p class="body-small">Every piece is personally approved by Guilherme himself.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- IMAGE 2: Workshop -->
+    <section class="atelier-section bg-darker">
+        <div class="container">
+            <div class="image-reveal">
+                <img src="https://placehold.co/1400x600/1a1a1a/D4AF37?text=Workshop+Interior" alt="Workshop" class="atelier-image parallax" data-speed="0.3">
+            </div>
+        </div>
+    </section>
+
+    <!-- THE TENSION -->
+    <section class="atelier-section bg-black">
+        <div class="container max-w-4xl">
+            <div class="border-gold-hover p-12 atelier-text-block">
+                <h2 class="title-section text-center mb-6">The Guardian of Quality</h2>
+                <p class="body-large text-center mb-6">
+                    Guilherme Marques has built this atelier on a foundation of <span class="text-gold">non-negotiable standards</span>.
+                    While others rush to market, he insists on the old ways.
+                </p>
+                <p class="body-small text-center text-cream opacity-60">
+                    But in an age of digital transformation and fast-paced innovation, can such dedication to tradition survive?
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL QUOTE -->
+    <section class="atelier-section bg-darker">
+        <div class="container">
+            <div class="quote-block text-gold italic">
+                "Perfection cannot be rushed. It cannot be automated. It can only be earned through patience and mastery."
+            </div>
+            <p class="text-center text-sm text-cream opacity-50 mt-6">
+                — Guilherme Marques, Head of Production
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo-box">
+            <span class="logo-text">HB</span>
+        </div>
+        <p class="footer-brand">HUGO BRITO</p>
+        <p class="footer-tagline">Luxury Portuguese Craftsmanship</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copyright">
+            &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
+        </p>
+        <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
+            Lisboa, Portugal
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>gsap.registerPlugin(ScrollTrigger);</script>
+    
+    
+    <script src="../script.js"></script>
+
+</body>
+</html>

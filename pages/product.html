@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Heritage Wool Blazer - Handcrafted Portuguese luxury blazer. €4,200.">
+    <title>Heritage Wool Blazer - HUGO BRITO</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        .product-image-section {
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 100px);
+            overflow: hidden;
+        }
+
+        .product-info-section {
+            padding: 4rem 3rem;
+        }
+
+        @media (max-width: 1024px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image-section {
+                position: relative;
+                top: 0;
+                height: 70vh;
+            }
+
+            .product-info-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header scrolled">
+        <div class="header-container">
+            <a href="../index.html" class="header-logo">
+                <div class="header-logo-box">
+                    <span class="header-logo-text">HB</span>
+                </div>
+                <span class="header-brand-name">HUGO BRITO</span>
+            </a>
+
+            <nav class="nav">
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="atelier.html" class="nav-link">Atelier</a></li>
+                    <li><a href="runway.html" class="nav-link">Runway</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Maison</a>
+                        <div class="nav-dropdown">
+                            <a href="team.html" class="nav-dropdown-link">Team</a>
+                            <a href="innovation.html" class="nav-dropdown-link">Innovation</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="cart-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PRODUCT DETAIL -->
+    <main class="bg-black">
+        <div class="product-layout">
+
+            <!-- LEFT: Image Section (Fixed) -->
+            <div class="product-image-section">
+                <img src="https://placehold.co/800x1200/1a1a1a/D4AF37?text=Heritage+Wool+Blazer" alt="Heritage Wool Blazer" class="img-cover">
+            </div>
+
+            <!-- RIGHT: Product Info (Scrollable) -->
+            <div class="product-info-section">
+
+                <!-- Breadcrumb -->
+                <p class="text-sm text-gold mb-6">
+                    <a href="shop.html" class="hover:underline">Shop</a> /
+                    <span class="text-cream">Heritage Wool Blazer</span>
+                </p>
+
+                <!-- Product Title -->
+                <h1 class="product-title title-section text-5xl mb-4">Heritage Wool Blazer</h1>
+
+                <!-- Category -->
+                <p class="text-uppercase text-sm text-gold mb-6 tracking-widest">Ready-to-Wear</p>
+
+                <!-- Price -->
+                <p class="product-price price text-4xl mb-8">€4,200</p>
+
+                <!-- Description -->
+                <div class="accent-line mb-8">
+                    <p class="body-large mb-4">
+                        A timeless blazer crafted from the finest Portuguese wool. Each piece is meticulously tailored
+                        by master artisans in our Lisboa atelier, requiring over 40 hours of handwork.
+                    </p>
+                    <p class="body-small text-cream opacity-70">
+                        This blazer embodies the perfect marriage of traditional craftsmanship and contemporary design—a
+                        signature of the Hugo Brito philosophy.
+                    </p>
+                </div>
+
+                <!-- Size Selection -->
+                <div class="mb-8">
+                    <h3 class="font-serif text-xl text-gold mb-3">Select Size</h3>
+                    <div class="flex gap-3">
+                        <button class="btn btn-ghost btn-small size-option" data-size="S">S</button>
+                        <button class="btn btn-ghost btn-small size-option" data-size="M">M</button>
+                        <button class="btn btn-ghost btn-small size-option active" data-size="L">L</button>
+                        <button class="btn btn-ghost btn-small size-option" data-size="XL">XL</button>
+                    </div>
+                </div>
+
+                <!-- Add to Cart Button -->
+                <button
+                    class="btn btn-primary w-full btn-large add-to-cart mb-8"
+                    data-product-id="product-1"
+                    data-product-name="Heritage Wool Blazer"
+                    data-product-price="€4,200"
+                    data-product-image="https://placehold.co/400x533/1a1a1a/D4AF37?text=Wool+Blazer"
+                    data-product-category="Ready-to-Wear">
+                    Add to Bag
+                </button>
+
+                <!-- Accordions -->
+                <div class="mt-12">
+
+                    <!-- Composition -->
+                    <div class="accordion active">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">Composition</h3>
+                            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>100% Portuguese Merino Wool</li>
+                                    <li>Horn buttons from local artisans</li>
+                                    <li>Italian silk lining</li>
+                                    <li>Hand-stitched lapels</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery -->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">Delivery & Returns</h3>
+                            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p class="mb-3">
+                                    <strong class="text-gold">Delivery:</strong><br>
+                                    Each piece is made to order. Please allow 4-6 weeks for production and delivery.
+                                    Complimentary worldwide shipping.
+                                </p>
+                                <p>
+                                    <strong class="text-gold">Returns:</strong><br>
+                                    30-day return policy. Items must be unworn with original tags attached.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artisan Note -->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title">Artisan Note</h3>
+                            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p class="italic text-cream opacity-80">
+                                    "This blazer represents the culmination of 40 years of tailoring expertise. Every stitch
+                                    is a testament to our commitment to perfection. We refuse to rush quality."
+                                </p>
+                                <p class="mt-4 text-sm text-gold">
+                                    — Guilherme Marques, Head of Production
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo-box">
+            <span class="logo-text">HB</span>
+        </div>
+        <p class="footer-brand">HUGO BRITO</p>
+        <p class="footer-tagline">Luxury Portuguese Craftsmanship</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copyright">
+            &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
+        </p>
+        <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
+            Lisboa, Portugal
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>gsap.registerPlugin(ScrollTrigger);</script>
+    
+    
+    <script src="../script.js"></script>
+
+    <!-- Size Selection Logic -->
+    <script>
+        document.querySelectorAll('.size-option').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.size-option').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
