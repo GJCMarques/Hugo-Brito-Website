@@ -6,43 +6,78 @@
     <meta name="description" content="The Atelier - Where Portuguese craftsmanship meets obsessive quality. Hugo Brito's workshop of perfection.">
     <title>The Atelier - HUGO BRITO</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="../style.css">
 
-    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <style>
+    <style> 
+        /* Header visível e no topo */
+        .header {
+            z-index: 9999 !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+        }
+        
+        /* Hero Section */
         .atelier-hero {
-            min-height: 100vh;
+            min-height: 80vh; 
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: 1;
         }
 
+        .atelier-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        .atelier-hero .container {
+            position: relative;
+            z-index: 10; 
+        }
+
+        .hero-anim {
+            opacity: 0;
+            visibility: hidden; 
+            transform: translateY(30px);
+        }
+
+        /* Ajuste de Espaços */
         .atelier-section {
-            padding: 8rem 0;
+            padding: 5rem 0;
             position: relative;
         }
 
+        /* Imagens */
+        .atelier-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
         .atelier-image {
             width: 100%;
-            height: 600px;
+            height: 100%;
             object-fit: cover;
-            margin: 4rem 0;
         }
 
+        /* Texto de Citação */
         .quote-block {
             font-family: var(--font-serif);
             font-size: clamp(2rem, 4vw, 3.5rem);
@@ -52,11 +87,16 @@
             margin: 0 auto;
             padding: 4rem 2rem;
         }
+        
+        .text-readable {
+            max-width: 65ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
-<body>
+<body class="bg-black text-cream">
 
-    <!-- HEADER -->
     <header class="header">
         <div class="header-container">
             <a href="../index.html" class="header-logo">
@@ -77,7 +117,6 @@
                     <li><a href="../index.html" class="nav-link">Home</a></li>
                     <li><a href="shop.html" class="nav-link">Shop</a></li>
                     <li><a href="atelier.html" class="nav-link active">Atelier</a></li>
-                    <li><a href="runway.html" class="nav-link">Runway</a></li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Maison</a>
                         <div class="nav-dropdown">
@@ -87,93 +126,81 @@
                     </li>
                 </ul>
 
-                <div class="cart-icon">
+                <a href="shop.html" class="cart-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
                     <span class="cart-count">0</span>
-                </div>
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="atelier-hero bg-darker">
+    <section class="atelier-hero" style="background-image: url('../assets/img/hands-working.jpg');">
         <div class="container text-center">
-            <h1 class="atelier-title title-hero fade-in">THE ATELIER</h1>
-            <div class="divider-gold-solid my-8"></div>
-            <p class="subtitle slide-up">Where Time Stands Still for Perfection</p>
+            <span class="text-gold text-sm tracking-[0.3em] uppercase mb-4 block hero-anim">The Craft</span>
+            <h1 class="atelier-title title-hero mb-6 hero-anim">THE ATELIER</h1>
+            <div class="divider-gold-solid mx-auto mb-8 hero-anim"></div>
+            <p class="subtitle hero-anim" style="max-width: 600px; margin: 0 auto;">Where Time Stands Still for Perfection</p>
         </div>
     </section>
 
-    <!-- PHILOSOPHY -->
     <section class="atelier-section bg-black">
         <div class="container">
-            <div class="quote-block atelier-text-block text-cream">
+            <div id="main-quote" class="quote-block text-cream">
                 "We refuse to rush perfection. Every stitch, every seam, every button is placed with deliberate care."
             </div>
         </div>
     </section>
 
-    <!-- IMAGE 1: Hands Working -->
     <section class="atelier-section bg-darker">
         <div class="container">
-            <div class="image-reveal">
-                <img src="../assets/img/hands-working.jpg" alt="Artisan hands" class="atelier-image parallax" data-speed="0.5">
-            </div>
-            <div class="max-w-3xl mx-auto mt-12 atelier-text-block">
-                <h2 class="title-section text-center mb-6">Slow Fashion</h2>
-                <div class="accent-line">
-                    <p class="body-large text-center">
-                        In our Lisboa atelier, time is not measured in hours, but in the quality of each thread.
-                        This is Guilherme's domain—a sanctuary of order, precision, and unwavering standards.
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="atelier-text-block order-2 md:order-1">
+                    <h2 class="title-section mb-6">Creative Chaos</h2>
+                    <div class="divider-gold ml-0 mb-6"></div>
+                    <p class="body-large mb-6 text-readable">
+                        In our Porto atelier, time is not measured in hours, but in the quality of each thread. 
+                        Before a single cut is made, the mood board defines the soul of the collection.
+                    </p>
+                    <p class="body-small opacity-70 text-readable">
+                        It creates a sanctuary of order, precision, and unwavering standards amidst the artistic chaos.
                     </p>
                 </div>
+
+                <div class="order-1 md:order-2">
+                    <div class="image-reveal atelier-image-container" style="height: 600px;">
+                        <img src="../assets/img/workshop.jpg" alt="Moodboard and Sketches" class="atelier-image">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- THE PROCESS -->
     <section class="atelier-section bg-black">
         <div class="container">
-            <h2 class="title-section text-center mb-16">The Process</h2>
-            <div class="grid grid-3 gap-12 max-w-5xl mx-auto">
-
-                <div class="text-center scale-in">
-                    <div class="logo-box mx-auto mb-4">
-                        <span class="text-2xl">01</span>
-                    </div>
-                    <h3 class="font-serif text-2xl text-gold mb-3">Selection</h3>
-                    <p class="body-small">Only the finest Portuguese materials pass our rigorous standards.</p>
+            <h2 class="title-section text-center mb-12">The Process</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="process-card text-center p-6 border border-white/10 hover:border-gold/50 transition-colors duration-500 rounded-sm">
+                    <div class="text-gold font-serif text-4xl mb-4">01</div>
+                    <h3 class="font-serif text-xl text-cream mb-3 tracking-widest">SELECTION</h3>
+                    <p class="body-small opacity-60">Only the finest Portuguese materials pass our rigorous standards.</p>
                 </div>
 
-                <div class="text-center scale-in">
-                    <div class="logo-box mx-auto mb-4">
-                        <span class="text-2xl">02</span>
-                    </div>
-                    <h3 class="font-serif text-2xl text-gold mb-3">Craftsmanship</h3>
-                    <p class="body-small">40+ hours of meticulous handwork by master artisans.</p>
+                <div class="process-card text-center p-6 border border-white/10 hover:border-gold/50 transition-colors duration-500 rounded-sm">
+                    <div class="text-gold font-serif text-4xl mb-4">02</div>
+                    <h3 class="font-serif text-xl text-cream mb-3 tracking-widest">CRAFT</h3>
+                    <p class="body-small opacity-60">40+ hours of meticulous handwork by master artisans on every piece.</p>
                 </div>
 
-                <div class="text-center scale-in">
-                    <div class="logo-box mx-auto mb-4">
-                        <span class="text-2xl">03</span>
-                    </div>
-                    <h3 class="font-serif text-2xl text-gold mb-3">Inspection</h3>
-                    <p class="body-small">Every piece is personally approved by Guilherme himself.</p>
+                <div class="process-card text-center p-6 border border-white/10 hover:border-gold/50 transition-colors duration-500 rounded-sm">
+                    <div class="text-gold font-serif text-4xl mb-4">03</div>
+                    <h3 class="font-serif text-xl text-cream mb-3 tracking-widest">INSPECTION</h3>
+                    <p class="body-small opacity-60">Every piece is personally approved by Guilherme himself.</p>
                 </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- IMAGE 2: Workshop -->
-    <section class="atelier-section bg-darker">
-        <div class="container">
-            <div class="image-reveal">
-                <img src="../assets/img/workshop.jpg" alt="Workshop" class="atelier-image parallax" data-speed="0.3">
             </div>
         </div>
     </section>
@@ -206,7 +233,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-logo-box">
             <span class="logo-text">HB</span>
@@ -218,14 +244,56 @@
             &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
         </p>
         <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
-            Lisboa, Portugal
+            Porto, Portugal
         </p>
     </footer>
 
-    <!-- JavaScript -->
-    <script>gsap.registerPlugin(ScrollTrigger);</script>
-    
-    
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. HERO: Animação suave (Fade In Lento)
+        gsap.to(".hero-anim", {
+            autoAlpha: 1,    
+            y: 0,            
+            duration: 2,
+            stagger: 0.3,    
+            ease: "power2.out",
+            delay: 0.2
+        });
+
+        // 2. CITAÇÃO: Aparece ao fazer scroll
+        gsap.to("#main-quote", {
+            scrollTrigger: {
+                trigger: "#main-quote",
+                start: "top 85%", 
+            },
+            opacity: 1, 
+            scale: 1, 
+            duration: 1.5, 
+            ease: "power2.out" 
+        });
+
+        // 3. CARDS: Animação dos passos 01, 02, 03
+        gsap.from(".process-card", {
+            scrollTrigger: {
+                trigger: ".grid-cols-3",
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // REFRESH: Garante que tudo funciona depois de carregar
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+                console.log("Atelier Ready");
+            }, 200);
+        });
+    </script>
     <script src="../script.js"></script>
 
 </body>
