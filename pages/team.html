@@ -3,27 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Meet the visionary leadership team behind HUGO BRITO's unparalleled excellence.">
+    <meta name="description" content="Meet the visionary leadership team behind HUGO BRITO.">
     <title>Leadership Team - HUGO BRITO</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../style.css">
 
-    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* === HEADER FIX === */
+        .header {
+            z-index: 9999 !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        /* === LAYOUT ESTRUTURAL === */
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5dc;
+            overflow-x: hidden;
+        }
+
+        .team-section {
+            padding-top: 160px;
+            padding-bottom: 6rem;
+            min-height: 100vh;
+        }
+
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem auto;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background-color: #D4AF37;
+            margin: 2rem auto;
+        }
+
+        /* === GRID DE CARDS (Layout Vertical/Grid) === */
+        .team-grid {
+            display: grid;
+            /* Desktop: 4 colunas | Tablet: 2 colunas | Mobile: 1 coluna */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* === FLIP CARD ESTILO === */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+            height: 550px; /* Altura fixa para garantir uniformidade */
+            width: 100%;
+            cursor: pointer;
+            
+            /* SEGURANÇA: Garante que o card é visível mesmo sem JS */
+            opacity: 1 !important; 
+            visibility: visible !important;
+            transform: none !important;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Faces do Card */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* FRENTE: Imagem + Nome */
+        .flip-card-front {
+            background-color: #1a1a1a; /* Fallback visível */
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Overlay para o texto ser legível sobre a foto */
+        .flip-card-front::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            z-index: 1;
+        }
+
+        .flip-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            z-index: 2; /* Acima do overlay */
+            text-align: left;
+        }
+
+        .member-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .member-title {
+            color: #D4AF37;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        /* VERSO: Informação Psicológica */
+        .flip-card-back {
+            background-color: #080808;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            border: 1px solid #D4AF37;
+            background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+        }
+
+        .profile-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .profile-type {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #D4AF37;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .profile-quote {
+            font-style: italic;
+            font-size: 1rem;
+            color: #ccc;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .confidential-stamp {
+            border: 1px solid #DC143C; /* Vermelho */
+            color: #DC143C;
+            padding: 0.5rem 1rem;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-top: auto; /* Empurra para baixo */
+        }
+
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            .team-grid { 
+                grid-template-columns: 1fr; /* Vertical no mobile */
+                gap: 3rem;
+            }
+            .team-intro h2 { font-size: 2.5rem; }
+            .flip-card { height: 500px; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- HEADER -->
     <header class="header">
         <div class="header-container">
             <a href="../index.html" class="header-logo">
@@ -46,7 +235,7 @@
                     <li><a href="atelier.html" class="nav-link">Atelier</a></li>
                     <li><a href="runway.html" class="nav-link">Runway</a></li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Maison</a>
+                        <a href="#" class="nav-link active">Maison</a>
                         <div class="nav-dropdown">
                             <a href="team.html" class="nav-dropdown-link active">Team</a>
                             <a href="innovation.html" class="nav-dropdown-link">Innovation</a>
@@ -54,182 +243,106 @@
                     </li>
                 </ul>
 
-                <div class="cart-icon">
+                <a href="shop.html" class="cart-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
                     <span class="cart-count">0</span>
-                </div>
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- TEAM SECTION -->
     <section class="team-section">
         <div class="container">
             <div class="team-intro">
-                <h2 class="section-title">Leadership</h2>
-
+                <h2 class="text-5xl md:text-6xl font-serif text-cream mb-4">Leadership</h2>
                 <div class="section-divider"></div>
-
-                <p class="team-subtitle">
-                    The visionaries behind HUGO BRITO's unparalleled excellence
+                <p class="text-lg text-gray-400 mb-2">
+                    The visionaries defining the New Era.
                 </p>
-
-                <p class="team-hint">
-                    (Hover over cards to reveal insights)
+                <p class="text-xs text-gold opacity-60 uppercase tracking-widest mt-4">
+                    (Hover or Tap cards to reveal Profile)
                 </p>
             </div>
 
-            <!-- Team Grid -->
             <div class="team-grid">
 
-                <!-- Card 1: Hugo Brito -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <!-- Front -->
-                        <div class="flip-card-front" style="background-image: url('https://placehold.co/400x600/1a1a1a/D4AF37?text=HB&font=playfair-display');">
+                        <div class="flip-card-front" style="background-image: url('https://placehold.co/600x800/111/333?text=Photo+Missing');">
+                            <div class="flip-card-front" style="background-image: url('../assets/img/hugo.jpg'), url('https://placehold.co/600x800/1a1a1a/D4AF37?text=HB'); position:absolute; top:0; left:0; width:100%; height:100%;"></div>
+                            
                             <div class="flip-card-content">
-                                <div class="member-icon">
-                                    <span class="member-icon-text">HB</span>
-                                </div>
                                 <h3 class="member-name">Hugo Brito</h3>
                                 <p class="member-title">CEO & Founder</p>
                             </div>
                         </div>
-
-                        <!-- Back -->
                         <div class="flip-card-back">
-                            <div class="warning-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                </svg>
-                            </div>
-
-                            <h4 class="profile-title">PSYCHOLOGICAL PROFILE</h4>
-
-                            <div class="profile-divider"></div>
-
-                            <p class="profile-type">High Power Motivation</p>
-
-                            <p class="profile-trait">"Visionary but prone to Micromanagement"</p>
-
-                            <div class="confidential-stamp">
-                                CONFIDENTIAL • INTERNAL USE ONLY
-                            </div>
+                            <span class="profile-label">Psychological Profile</span>
+                            <h4 class="profile-type">High Power Motivation</h4>
+                            <div class="w-12 h-[1px] bg-gold mb-6 opacity-50"></div>
+                            <p class="profile-quote">"Visionary leader, but prone to micromanagement when standards aren't met."</p>
+                            <div class="confidential-stamp">CONFIDENTIAL</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: Nuno Magalhães -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <!-- Front -->
-                        <div class="flip-card-front" style="background-image: url('https://placehold.co/400x600/1a1a1a/D4AF37?text=NM&font=playfair-display');">
+                        <div class="flip-card-front">
+                            <div class="flip-card-front" style="background-image: url('../assets/img/nuno.jpg'), url('https://placehold.co/600x800/1a1a1a/D4AF37?text=NM'); position:absolute; top:0; left:0; width:100%; height:100%;"></div>
                             <div class="flip-card-content">
-                                <div class="member-icon">
-                                    <span class="member-icon-text">NM</span>
-                                </div>
                                 <h3 class="member-name">Nuno Magalhães</h3>
                                 <p class="member-title">Creative Director</p>
                             </div>
                         </div>
-
-                        <!-- Back -->
                         <div class="flip-card-back">
-                            <div class="warning-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                </svg>
-                            </div>
-
-                            <h4 class="profile-title">PSYCHOLOGICAL PROFILE</h4>
-
-                            <div class="profile-divider"></div>
-
-                            <p class="profile-type">High Independence</p>
-
-                            <p class="profile-trait">"Creative Genius, resistant to structure"</p>
-
-                            <div class="confidential-stamp">
-                                CONFIDENTIAL • INTERNAL USE ONLY
-                            </div>
+                            <span class="profile-label">Psychological Profile</span>
+                            <h4 class="profile-type">High Independence</h4>
+                            <div class="w-12 h-[1px] bg-gold mb-6 opacity-50"></div>
+                            <p class="profile-quote">"Creative Genius. Resistant to structure and deadlines. Values freedom above all."</p>
+                            <div class="confidential-stamp">CONFIDENTIAL</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 3: Manuel Santos -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <!-- Front -->
-                        <div class="flip-card-front" style="background-image: url('https://placehold.co/400x600/1a1a1a/D4AF37?text=MS&font=playfair-display');">
+                        <div class="flip-card-front">
+                            <div class="flip-card-front" style="background-image: url('../assets/img/manuel.jpg'), url('https://placehold.co/600x800/1a1a1a/D4AF37?text=MS'); position:absolute; top:0; left:0; width:100%; height:100%;"></div>
                             <div class="flip-card-content">
-                                <div class="member-icon">
-                                    <span class="member-icon-text">MS</span>
-                                </div>
                                 <h3 class="member-name">Manuel Santos</h3>
                                 <p class="member-title">Head of Marketing</p>
                             </div>
                         </div>
-
-                        <!-- Back -->
                         <div class="flip-card-back">
-                            <div class="warning-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                </svg>
-                            </div>
-
-                            <h4 class="profile-title">PSYCHOLOGICAL PROFILE</h4>
-
-                            <div class="profile-divider"></div>
-
-                            <p class="profile-type">High Social Need</p>
-
-                            <p class="profile-trait">"The Mediator/Peacemaker"</p>
-
-                            <div class="confidential-stamp">
-                                CONFIDENTIAL • INTERNAL USE ONLY
-                            </div>
+                            <span class="profile-label">Psychological Profile</span>
+                            <h4 class="profile-type">High Social Need</h4>
+                            <div class="w-12 h-[1px] bg-gold mb-6 opacity-50"></div>
+                            <p class="profile-quote">"The Mediator. Excellent communicator but avoids necessary conflict to keep peace."</p>
+                            <div class="confidential-stamp">CONFIDENTIAL</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 4: Guilherme Marques -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <!-- Front -->
-                        <div class="flip-card-front" style="background-image: url('https://placehold.co/400x600/1a1a1a/D4AF37?text=GM&font=playfair-display');">
+                        <div class="flip-card-front">
+                            <div class="flip-card-front" style="background-image: url('../assets/img/guilherme.jpg'), url('https://placehold.co/600x800/1a1a1a/D4AF37?text=GM'); position:absolute; top:0; left:0; width:100%; height:100%;"></div>
                             <div class="flip-card-content">
-                                <div class="member-icon">
-                                    <span class="member-icon-text">GM</span>
-                                </div>
                                 <h3 class="member-name">Guilherme Marques</h3>
                                 <p class="member-title">Head of Production</p>
                             </div>
                         </div>
-
-                        <!-- Back -->
                         <div class="flip-card-back">
-                            <div class="warning-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                </svg>
-                            </div>
-
-                            <h4 class="profile-title">PSYCHOLOGICAL PROFILE</h4>
-
-                            <div class="profile-divider"></div>
-
-                            <p class="profile-type">High Need for Order</p>
-
-                            <p class="profile-trait">"Quality Guardian, resistant to change"</p>
-
-                            <div class="confidential-stamp">
-                                CONFIDENTIAL • INTERNAL USE ONLY
-                            </div>
+                            <span class="profile-label">Psychological Profile</span>
+                            <h4 class="profile-type">High Need for Order</h4>
+                            <div class="w-12 h-[1px] bg-gold mb-6 opacity-50"></div>
+                            <p class="profile-quote">"Quality Guardian. Extremely organized but resistant to change and innovation."</p>
+                            <div class="confidential-stamp">CONFIDENTIAL</div>
                         </div>
                     </div>
                 </div>
@@ -238,7 +351,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-logo-box">
             <span class="logo-text">HB</span>
@@ -250,14 +362,30 @@
             &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
         </p>
         <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
-            Lisboa, Portugal
+            Porto, Portugal
         </p>
     </footer>
 
-    <!-- JavaScript -->
-    <script>gsap.registerPlugin(ScrollTrigger);</script>
-    
-    
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animação Simples para Garantir Visibilidade
+        window.addEventListener('load', () => {
+            gsap.from(".flip-card", {
+                scrollTrigger: {
+                    trigger: ".team-grid",
+                    start: "top 85%"
+                },
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                stagger: 0.1, 
+                ease: "power2.out",
+                clearProps: "opacity" // Limpa o estilo após animar para evitar bugs
+            });
+            console.log("Team Page Fixed");
+        });
+    </script>
     <script src="../script.js"></script>
 
 </body>
