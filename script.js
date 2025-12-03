@@ -327,9 +327,9 @@ function initMobileMenu() {
         // Animate hamburger icon
         const spans = toggle.querySelectorAll('span');
         if (isActive) {
-            spans[0].style.transform = 'rotate(45deg) translateY(12px)';
+            spans[0].style.transform = 'rotate(45deg) translateY(11px)';
             spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translateY(-12px)';
+            spans[2].style.transform = 'rotate(-45deg) translateY(-11px)';
         } else {
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
