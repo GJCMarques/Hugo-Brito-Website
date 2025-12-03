@@ -6,22 +6,32 @@
     <meta name="description" content="The Runway - Where creative chaos meets visionary design. Nuno Magalhães' world of breaking boundaries.">
     <title>The Runway - HUGO BRITO</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="../style.css">
 
-    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
+        /* === CORREÇÃO DO HEADER === */
+        .header {
+            z-index: 9999 !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            transition: background-color 0.4s ease;
+        }
+
+        .header.scrolled {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--color-gold);
+        }
+
+        /* === RUNWAY STYLES === */
         .runway-hero {
             min-height: 100vh;
             display: flex;
@@ -29,54 +39,62 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            /* Um fundo subtil para não ser apenas preto */
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+        }
+
+        /* Título Especial com Animação de Caos */
+        .runway-title-fix {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 8vw, 6rem); /* Responsivo */
+            font-weight: 800;
+            letter-spacing: 0.5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            text-align: center;
+            /* Começa invisível para o JS animar */
+            opacity: 0; 
+            visibility: hidden;
+        }
+
+        .runway-title-fix span {
+            display: inline-block; /* Necessário para animar letras individuais */
         }
 
         .chaos-grid {
             position: relative;
-            min-height: 80vh;
+            min-height: 100vh; /* Mais altura para espalhar as imagens */
             padding: 4rem 2rem;
+            overflow: hidden;
         }
 
         .runway-image {
             position: absolute;
-            width: 400px;
-            height: 500px;
+            width: 350px;
+            height: 450px;
             object-fit: cover;
-            border: 2px solid var(--color-gold);
-            transition: var(--transition-smooth);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            /* Esconder inicialmente para animação suave */
+            opacity: 0;
+            transform: scale(0.8);
         }
 
         .runway-image:hover {
-            z-index: 10;
-            transform: scale(1.05) rotate(0deg) !important;
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
+            z-index: 50;
+            transform: scale(1.1) rotate(0deg) !important;
+            border-color: var(--color-gold);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
         }
 
-        .runway-image:nth-child(1) {
-            top: 10%;
-            left: 5%;
-            transform: rotate(-5deg);
-        }
-
-        .runway-image:nth-child(2) {
-            top: 30%;
-            right: 10%;
-            transform: rotate(8deg);
-            z-index: 2;
-        }
-
-        .runway-image:nth-child(3) {
-            bottom: 15%;
-            left: 15%;
-            transform: rotate(3deg);
-        }
-
-        .runway-image:nth-child(4) {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-3deg);
-            z-index: 1;
-        }
+        /* Posicionamento das imagens "Caóticas" */
+        /* Nota: O JS vai ajustar isto, mas o CSS dá a base */
+        .img-pos-1 { top: 10%; left: 10%; transform: rotate(-5deg); }
+        .img-pos-2 { top: 20%; right: 15%; transform: rotate(8deg); }
+        .img-pos-3 { bottom: 15%; left: 20%; transform: rotate(3deg); }
+        .img-pos-4 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-3deg); z-index: 10; }
 
         .chaos-text {
             font-family: var(--font-serif);
@@ -84,7 +102,7 @@
             font-weight: 900;
             line-height: 1;
             text-transform: uppercase;
-            -webkit-text-stroke: 2px var(--color-gold);
+            -webkit-text-stroke: 1px var(--color-gold);
             color: transparent;
         }
 
@@ -95,19 +113,27 @@
 
         @media (max-width: 768px) {
             .runway-image {
-                width: 280px;
-                height: 360px;
+                width: 200px;
+                height: 280px;
+                position: relative; /* Em mobile, melhor empilhar ou usar grid simples */
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+                margin: 2rem auto;
             }
 
             .chaos-grid {
-                min-height: 120vh;
+                display: flex;
+                flex-direction: column;
+                min-height: auto;
             }
         }
     </style>
 </head>
-<body>
+<body class="bg-black text-cream">
 
-    <!-- HEADER -->
     <header class="header">
         <div class="header-container">
             <a href="../index.html" class="header-logo">
@@ -138,35 +164,34 @@
                     </li>
                 </ul>
 
-                <div class="cart-icon">
+                <a href="shop.html" class="cart-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
                     <span class="cart-count">0</span>
-                </div>
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="runway-hero bg-darker">
-        <div class="container text-center">
-            <h1 class="runway-title title-hero">BREAKING BOUNDARIES</h1>
-            <div class="divider-gold-solid my-8"></div>
-            <p class="subtitle">Where Chaos Becomes Beauty</p>
+    <section class="runway-hero">
+        <div class="container text-center relative z-10">
+            <h1 class="runway-title-fix mb-8">BREAKING<br>BOUNDARIES</h1>
+            
+            <div class="divider-gold-solid mx-auto mb-8 opacity-0 anim-fade"></div>
+            <p class="subtitle opacity-0 anim-fade">Where Chaos Becomes Beauty</p>
         </div>
     </section>
 
-    <!-- MANIFESTO -->
-    <section class="section bg-black">
+    <section class="section bg-black relative z-20">
         <div class="container max-w-4xl text-center">
             <p class="chaos-text mb-6">VISION</p>
             <p class="chaos-text filled mb-6">NOT RULES</p>
             <p class="chaos-text mb-12">CHAOS</p>
 
-            <div class="runway-text">
+            <div class="runway-text max-w-2xl mx-auto">
                 <p class="body-large mb-6">
                     This is Nuno's domain. The Creative Director who sees fashion not as a craft, but as <span class="text-gold">art in rebellion</span>.
                 </p>
@@ -177,18 +202,16 @@
         </div>
     </section>
 
-    <!-- CHAOS GRID: Overlapping Images -->
     <section class="chaos-grid bg-darker">
-        <img src="../assets/img/design-1.jpg" alt="Design 1" class="runway-image">
-        <img src="../assets/img/design-2.jpg" alt="Design 2" class="runway-image">
-        <img src="../assets/img/design-3.jpg" alt="Design 3" class="runway-image">
-        <img src="../assets/img/design-4.jpg" alt="Design 4" class="runway-image">
+        <img src="../assets/img/design-1.jpg" alt="Design 1" class="runway-image img-pos-1">
+        <img src="../assets/img/design-2.jpg" alt="Design 2" class="runway-image img-pos-2">
+        <img src="../assets/img/design-3.jpg" alt="Design 3" class="runway-image img-pos-3">
+        <img src="../assets/img/design-4.jpg" alt="Design 4" class="runway-image img-pos-4">
     </section>
 
-    <!-- PHILOSOPHY -->
     <section class="section bg-black">
         <div class="container max-w-5xl">
-            <div class="grid grid-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-12">
 
                 <div class="runway-text">
                     <h2 class="title-section mb-6">The Creative Mind</h2>
@@ -244,7 +267,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-logo-box">
             <span class="logo-text">HB</span>
@@ -256,14 +278,78 @@
             &copy; 2025 Hugo Brito. A fictional brand created for organizational behavior analysis.
         </p>
         <p class="footer-copyright mt-2" style="color: rgba(245, 245, 220, 0.3);">
-            Lisboa, Portugal
+            Porto, Portugal
         </p>
     </footer>
 
-    <!-- JavaScript -->
-    <script>gsap.registerPlugin(ScrollTrigger);</script>
-    
-    
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Preparar e Animar o Título "BREAKING BOUNDARIES"
+        const titleElement = document.querySelector('.runway-title-fix');
+        const text = titleElement.innerText;
+        titleElement.innerHTML = ''; // Limpar texto original
+        
+        // Separar em letras para animar individualmente (efeito caos)
+        // Se houver <br>, precisamos tratar, mas para simplificar vamos tratar como bloco
+        const words = text.split('\n'); // Separar por quebra de linha se houver
+        
+        // Maneira simplificada de criar spans para letras, preservando quebras
+        titleElement.innerHTML = `
+            <span class="block mb-2">BREAKING</span>
+            <span class="block">BOUNDARIES</span>
+        `;
+        
+        // Agora animamos os spans (palavras)
+        // Tornar visível primeiro (autoAlpha trata do visibility: hidden)
+        gsap.to('.runway-title-fix', { autoAlpha: 1, duration: 0 });
+
+        // Animação "Caótica" que se organiza
+        gsap.from('.runway-title-fix span', {
+            duration: 1.5,
+            opacity: 0,
+            y: 100,
+            rotation: 10, // Rotação ligeira para dar ideia de instabilidade
+            stagger: 0.2,
+            ease: "back.out(1.7)",
+            delay: 0.2
+        });
+
+        // 2. Animar subtítulo e divisor
+        gsap.to('.anim-fade', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            delay: 0.8,
+            ease: "power2.out"
+        });
+
+        // 3. Animação das Imagens do Grid (Efeito de serem atiradas para a mesa)
+        gsap.to('.runway-image', {
+            scrollTrigger: {
+                trigger: '.chaos-grid',
+                start: 'top 70%'
+            },
+            opacity: 1,
+            scale: 1,
+            rotation: (i) => {
+                // Rotações finais (coincidem mais ou menos com o CSS mas dão aleatoriedade)
+                return [ -5, 8, 3, -3 ][i]; 
+            },
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Refresh para garantir layout
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+                console.log("Runway Chaos Loaded");
+            }, 200);
+        });
+    </script>
     <script src="../script.js"></script>
 
 </body>
