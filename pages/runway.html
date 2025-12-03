@@ -42,7 +42,6 @@
             background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
         }
 
-        /* Título Especial com Animação de Caos */
         .runway-title-fix {
             font-family: var(--font-serif);
             font-size: clamp(3rem, 8vw, 6rem);
@@ -65,8 +64,10 @@
             min-height: 100vh;
             padding: 4rem 2rem;
             overflow: hidden;
+            width: 100%;
         }
 
+        /* ESTILO BASE (DESKTOP) - Começa invisível para animar */
         .runway-image {
             position: absolute;
             width: 350px;
@@ -75,7 +76,7 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
             transition: all 0.5s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            opacity: 0;
+            opacity: 0; /* JS vai mudar isto */
             transform: scale(0.8);
         }
 
@@ -86,8 +87,7 @@
             box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
         }
 
-        /* Posicionamento das imagens "Caóticas" */
-        /* Nota: O JS vai ajustar isto, mas o CSS dá a base */
+        /* Posicionamento Desktop */
         .img-pos-1 { top: 10%; left: 10%; transform: rotate(-5deg); }
         .img-pos-2 { top: 20%; right: 15%; transform: rotate(8deg); }
         .img-pos-3 { bottom: 15%; left: 20%; transform: rotate(3deg); }
@@ -108,23 +108,40 @@
             color: var(--color-gold);
         }
 
+        /* === CORREÇÃO "NUCLEAR" PARA MOBILE === */
         @media (max-width: 768px) {
+            .chaos-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 3rem !important;
+                min-height: auto !important;
+                padding: 4rem 1.5rem !important;
+                height: auto !important;
+            }
+
             .runway-image {
-                width: 200px;
-                height: 280px;
-                position: relative;
+                /* RESET TOTAL DE POSIÇÃO */
+                position: relative !important;
                 top: auto !important;
                 left: auto !important;
                 right: auto !important;
                 bottom: auto !important;
-                transform: none !important;
-                margin: 2rem auto;
-            }
-
-            .chaos-grid {
-                display: flex;
-                flex-direction: column;
-                min-height: auto;
+                
+                /* TAMANHO FIXO */
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 500px !important;
+                margin: 0 !important;
+                
+                /* FORÇAR VISIBILIDADE (O TRUQUE PARA NÃO DESAPARECER) */
+                opacity: 1 !important; 
+                visibility: visible !important;
+                transform: none !important; /* Remove escalas e rotações que baralham o telemóvel */
+                
+                /* Remover transições para evitar "flash" */
+                transition: none !important;
+                box-shadow: none !important;
+                border: 1px solid rgba(212, 175, 55, 0.5) !important;
             }
         }
     </style>
@@ -250,6 +267,7 @@
     </section>
 
     <!-- FINAL STATEMENT -->
+
     <section class="section bg-darker">
         <div class="container text-center">
             <div class="max-w-3xl mx-auto">
@@ -282,37 +300,24 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Preparar e Animar o Título "BREAKING BOUNDARIES"
+        // 1. TÍTULO
         const titleElement = document.querySelector('.runway-title-fix');
-        const text = titleElement.innerText;
-        titleElement.innerHTML = ''; // Limpar texto original
-        
-        // Separar em letras para animar individualmente (efeito caos)
-        // Se houver <br>, precisamos tratar, mas para simplificar vamos tratar como bloco
-        const words = text.split('\n'); // Separar por quebra de linha se houver
-        
-        // Maneira simplificada de criar spans para letras, preservando quebras
         titleElement.innerHTML = `
             <span class="block mb-2">BREAKING</span>
             <span class="block">BOUNDARIES</span>
         `;
-        
-        // Agora animamos os spans (palavras)
-        // Tornar visível primeiro (autoAlpha trata do visibility: hidden)
         gsap.to('.runway-title-fix', { autoAlpha: 1, duration: 0 });
 
-        // Animação "Caótica" que se organiza
         gsap.from('.runway-title-fix span', {
             duration: 1.5,
             opacity: 0,
             y: 100,
-            rotation: 10, // Rotação ligeira para dar ideia de instabilidade
+            rotation: 10,
             stagger: 0.2,
             ease: "back.out(1.7)",
             delay: 0.2
         });
 
-        // 2. Animar subtítulo e divisor
         gsap.to('.anim-fade', {
             opacity: 1,
             y: 0,
@@ -322,28 +327,37 @@
             ease: "power2.out"
         });
 
-        // 3. Animação das Imagens do Grid (Efeito de serem atiradas para a mesa)
-        gsap.to('.runway-image', {
-            scrollTrigger: {
-                trigger: '.chaos-grid',
-                start: 'top 70%'
-            },
-            opacity: 1,
-            scale: 1,
-            rotation: (i) => {
-                // Rotações finais (coincidem mais ou menos com o CSS mas dão aleatoriedade)
-                return [ -5, 8, 3, -3 ][i]; 
-            },
-            duration: 1.2,
-            stagger: 0.2,
-            ease: "power3.out"
+        // 2. LÓGICA DE GRID SEPARADA
+        // Usamos matchMedia para garantir que no mobile o JS NÃO toca nas imagens
+        // Deixamos o CSS !important fazer o trabalho de as manter visíveis.
+        let mm = gsap.matchMedia();
+
+        mm.add("(min-width: 769px)", () => {
+            // SÓ ANIMA NO PC (Desktop)
+            gsap.to('.runway-image', {
+                scrollTrigger: {
+                    trigger: '.chaos-grid',
+                    start: 'top 70%'
+                },
+                opacity: 1,
+                scale: 1,
+                rotation: (i) => {
+                    return [ -5, 8, 3, -3 ][i]; 
+                },
+                duration: 1.2,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
         });
 
-        // Refresh para garantir layout
+        // NOTA: Removi a parte do "(max-width: 768px)".
+        // No telemóvel, não vamos usar JS. O CSS com !important vai garantir
+        // que elas aparecem sem piscar e sem desaparecer.
+
         window.addEventListener('load', () => {
             setTimeout(() => {
                 ScrollTrigger.refresh();
-                console.log("Runway Chaos Loaded");
+                console.log("Runway Layout Fixed");
             }, 200);
         });
     </script>
