@@ -18,7 +18,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* === CORREÇÃO DO HEADER E LAYOUT === */
         
         /* Header sempre visível e clicável */
         .header {
@@ -61,22 +60,17 @@
         }
 
         .title-hero {
-            pointer-events: none; /* Permite clicar nos botões do header através do texto */
+            pointer-events: none; 
         }
         
-        /* === CORREÇÃO DAS 3 COLUNAS === */
         .three-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 4rem;
-            /* Garante que o espaço existe antes das imagens carregarem */
             min-height: 600px; 
         }
 
-        /* Mudei o nome da classe de .column-link para .hugo-col 
-           Isto impede que o script.js externo aplique a animação errada.
-        */
         .hugo-col {
             position: relative;
             aspect-ratio: 3 / 4;
@@ -268,10 +262,7 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Força bruta para garantir que as colunas aparecem
-        // Isto corre depois de TUDO carregar
         window.addEventListener('load', () => {
-            // Pequeno delay para garantir que o render do browser acabou
             setTimeout(() => {
                 ScrollTrigger.refresh();
                 console.log("Layout recalculado com sucesso.");
