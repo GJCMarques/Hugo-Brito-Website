@@ -138,14 +138,6 @@ Hugo-Brito-Website/
 
 ---
 
-## 📄 License
-
-This is a **fictional brand created for educational purposes**.
-
-The code is provided as-is for learning and demonstration. Feel free to use this as a reference for your own luxury e-commerce projects.
-
----
-
 ## 👤 Author
 
 Guilherme Marques
